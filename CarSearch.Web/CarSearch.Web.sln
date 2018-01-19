@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSearch.Web", "CarSearch.Web\CarSearch.Web.csproj", "{B09E1AEA-7CEE-416C-9499-22E20ECEAD4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarSearch.Web", "CarSearch.Web\CarSearch.Web.csproj", "{B09E1AEA-7CEE-416C-9499-22E20ECEAD4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSearch.Data", "CarSearch.Data\CarSearch.Data.csproj", "{D3BAD49D-BF34-493F-AC48-D48015A0D4E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarSearch.Data", "CarSearch.Data\CarSearch.Data.csproj", "{D3BAD49D-BF34-493F-AC48-D48015A0D4E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSearch.Services", "CarSearch.Services\CarSearch.Services.csproj", "{88457590-2AB5-43C1-B046-30141E407F5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D3BAD49D-BF34-493F-AC48-D48015A0D4E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3BAD49D-BF34-493F-AC48-D48015A0D4E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3BAD49D-BF34-493F-AC48-D48015A0D4E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88457590-2AB5-43C1-B046-30141E407F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88457590-2AB5-43C1-B046-30141E407F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88457590-2AB5-43C1-B046-30141E407F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88457590-2AB5-43C1-B046-30141E407F5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

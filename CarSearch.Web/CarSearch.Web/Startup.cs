@@ -1,6 +1,8 @@
 ﻿namespace CarSearch.Web
 {
     using CarSearch.Data;
+    using CarSearch.Services;
+    using CarSearch.Services.Implementations;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -20,6 +22,8 @@
         {
             services.AddDbContext<CarSearchDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<ICarService, CarService>();
 
             services.AddMvc();
         }
@@ -42,7 +46,7 @@
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Cars}/{action=SearchCar}/{id?}");
             });
         }
     }
