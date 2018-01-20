@@ -4,48 +4,58 @@
     ViewData["Title"] = "All Cars";
 }
 
-<h3>@ViewData["Title"]</h3>
 
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>
-                Make
-            </th>
-            <th>
-                Year
-            </th>
-            <th>
-                Power
-            </th>
-            <th>
-                Importer
-            </th>
-            <th>
-                Description
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var car in Model)
-        {
+@if (Model.Count() == 0)
+{
+    <h3>There are no cars matching your search!</h3>
+}
+else
+{
+    <h3>@ViewData["Title"]</h3>
+
+
+    <table class="table table-bordered table-hover">
+        <thead>
             <tr>
-                <td>
-                    @car.Make
-                </td>
-                <td>
-                    @car.Year
-                </td>
-                <td>
-                    @car.Power PS
-                </td>
-                <td>
-                    @car.Importer
-                </td>
-                <td>
-                    @Html.Raw(car.Description)
-                </td>
+                <th>
+                    Make
+                </th>
+                <th>
+                    Year
+                </th>
+                <th>
+                    Power
+                </th>
+                <th>
+                    Importer
+                </th>
+                <th>
+                    Description
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>
+                        @car.Make
+                    </td>
+                    <td>
+                        @car.Year
+                    </td>
+                    <td>
+                        @car.Power PS
+                    </td>
+                    <td>
+                        @car.Importer
+                    </td>
+                    <td>
+                        @Html.Raw(car.Description)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

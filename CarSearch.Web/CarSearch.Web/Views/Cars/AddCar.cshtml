@@ -1,0 +1,48 @@
+﻿@model AddCarFormModel
+
+@{
+    ViewData["Title"] = "Add Car";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Make"></label>
+                <input asp-for="Make" class="form-control" />
+                <span asp-validation-for="Make" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year"></label>
+                <input asp-for="Year" value="" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Power"></label>
+                <input asp-for="Power" value="" class="form-control" />
+                <span asp-validation-for="Power" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Importer"></label>
+                <input asp-for="Importer" class="form-control" />
+                <span asp-validation-for="Importer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Add Car</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

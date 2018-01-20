@@ -11,7 +11,7 @@
         [Required]
         [MinLength(3, ErrorMessage = "String with a minimum length of '3'.")]
         [MaxLength(20, ErrorMessage = "String with a maximum length of '20'.")]
-        [Display(Name = "Car Description")]
+        [Display(Name = "Description")]
         public string SearchString { get; set; }
 
         public IEnumerable<SelectListItem> Importers { get; set; }

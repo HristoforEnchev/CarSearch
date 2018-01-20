@@ -51,6 +51,21 @@
 
                 return View("All", this.cars.SearchByString(searchString));
             }
+            else if (importer == null && searchString == null)
+            {
+                ModelState.Remove("SearchString");
+                ModelState.AddModelError("SearchString", Message());
+
+                if (!ModelState.IsValid)
+                {
+                    var importersListItem = GetImportersListItem();
+
+                    return View(new SearchCarFormModel
+                    {
+                        Importers = importersListItem
+                    });
+                }
+            }
 
             if (!ModelState.IsValid)
             {
@@ -67,6 +82,27 @@
             return View("All", filteredCars);
         }
 
+        public IActionResult AddCar()
+        {
+            return View(new AddCarFormModel());
+        }
+
+        [HttpPost]
+        public IActionResult AddCar(AddCarFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            //html sanitizer for model.Description
+
+            this.cars.Add(model.Make, model.Year, model.Power, model.Importer, model.Description);
+
+            TempData["SuccessMessage"] = "Car added successfully!";
+
+            return RedirectToAction(nameof(All));
+        }
 
         public IActionResult All()
         {
@@ -88,6 +124,11 @@
             }
 
             return importersListItems;
+        }
+
+        private string Message()
+        {
+            return "Hristofor, priqtno mi e! Noviqt vi kolega :) else Please fill in at least one search field.";
         }
 
     }

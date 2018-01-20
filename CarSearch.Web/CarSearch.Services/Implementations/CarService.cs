@@ -15,14 +15,28 @@
             this.db = db;
         }
 
+        public void Add(string make, int year, int power, string importer, string description)
+        {
+            var car = new Car()
+            {
+                Make = make,
+                Year = year,
+                Power = power,
+                Importer = importer,
+                Description = description
+            };
 
-        public IEnumerable<Car> All() => this.db.Cars.ToList();
+            this.db.Cars.Add(car);
+            this.db.SaveChanges();
+        }
+
+        public IEnumerable<Car> All() => this.db.Cars.OrderByDescending(c => c.Id).ToList();
 
         public IEnumerable<string> GetImporters() => this.db.Cars.Select(c => c.Importer).Distinct().ToList();
 
         public IEnumerable<Car> SearchByImporter(string importer)
         {
-            var cars = this.db.Cars.Where(c => c.Importer == importer).ToList();
+            var cars = this.db.Cars.Where(c => c.Importer == importer).OrderBy(c => c.Year).ToList();
 
             return cars;
         }
@@ -31,18 +45,22 @@
         {
             var cars = SearchByImporter(importer);
 
-            var strings = searchString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var searchStrings = searchString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            foreach (var str in strings)
+            foreach (var str in searchStrings)
             {
-                cars = cars.Where(c => c.Description.ToLower().Contains(str.ToLower())).ToList();
+                cars = cars
+                    .Where(c => c.Description.ToLower()
+                    .Contains(str.ToLower()))
+                    .OrderBy(c => c.Year)
+                    .ToList();
             }
 
             if (cars.Count() != 0)
             {
                 foreach (var car in cars)
                 {
-                    car.Description = Replace(car.Description, strings);
+                    car.Description = HighLight(car.Description, searchStrings);
                 }
             }
 
@@ -53,27 +71,31 @@
         {
             var cars = this.db.Cars.ToList();
 
-            var strings = searchString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var searchStrings = searchString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            foreach (var str in strings)
+            foreach (var str in searchStrings)
             {
-                cars = cars.Where(c => c.Description.ToLower().Contains(str.ToLower())).ToList();
+                cars = cars
+                    .Where(c => c.Description.ToLower()
+                    .Contains(str.ToLower()))
+                    .OrderBy(c => c.Year)
+                    .ToList();
             }
 
             if (cars.Count != 0)
             {
                 foreach (var car in cars)
                 {
-                    car.Description = Replace(car.Description, strings);
+                    car.Description = HighLight(car.Description, searchStrings);
                 }
             }
 
             return cars;
         }
 
-        private string Replace(string description, string[] strings)
+        private string HighLight(string description, string[] searchStrings)
         {
-            foreach (var str in strings)
+            foreach (var str in searchStrings)
             {
                 description = description.Replace(str, $"<mark>{str}</mark>");
             }

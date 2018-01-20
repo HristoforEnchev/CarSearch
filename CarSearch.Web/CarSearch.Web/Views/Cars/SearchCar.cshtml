@@ -6,26 +6,31 @@
 
 <h3>@ViewData["Title"]</h3>
 
+<hr />
+
 <div class="row">
-    <div class="col-md-4">
-            <form  method="post">
-                <hr />
-                <div class="form-group">
-                    <label asp-for="Importer"></label>
-                    <select asp-for="Importer" asp-items="Model.Importers"  class="form-control" ></select>
-                    <span asp-validation-for="Importer" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SearchString"></label>
-                    <input asp-for="SearchString" class="form-control"/>
-                    <span asp-validation-for="SearchString" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default">Search</button>
-                </div>
-            </form>
+    <div class="col-md-6">
+        <a asp-controller="Cars" asp-action="All">
+            <img src="~/images/cars.jpeg" alt="Cars" class="img-thumbnail img-responsive" />
+        </a>
     </div>
-    
+    <div class="col-md-4 col-md-offset-1">
+         <form  method="post" class="search-form">
+             <div class="form-group">
+                 <label asp-for="Importer"></label>
+                 <select asp-for="Importer" asp-items="Model.Importers"  class="form-control" ></select>
+                 <span asp-validation-for="Importer" class="text-danger"></span>
+             </div>
+             <div class="form-group">
+                 <label asp-for="SearchString"></label>
+                 <input asp-for="SearchString" class="form-control"/>
+                 <span asp-validation-for="SearchString" class="text-danger"></span>
+             </div>
+             <div class="form-group">
+                 <button type="submit" class="btn btn-default">Search</button>
+             </div>
+         </form>
+    </div>
 </div>
 
 

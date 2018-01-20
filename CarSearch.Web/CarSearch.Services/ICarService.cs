@@ -15,6 +15,6 @@
 
         IEnumerable<Car> SearchByString(string searchString);
 
-
+        void Add(string make, int year, int power, string importer, string description);
     }
 }

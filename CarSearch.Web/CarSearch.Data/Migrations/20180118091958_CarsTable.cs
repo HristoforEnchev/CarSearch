@@ -1,10 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
-
-namespace CarSearch.Data.Migrations
+﻿namespace CarSearch.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Metadata;
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class CarsTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

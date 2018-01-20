@@ -5,6 +5,7 @@
     using CarSearch.Services.Implementations;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +26,10 @@
 
             services.AddTransient<ICarService, CarService>();
 
-            services.AddMvc();
+            services.AddMvc(options => 
+            {
+                options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            });
         }
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
